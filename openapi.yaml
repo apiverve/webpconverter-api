@@ -1,0 +1,122 @@
+openapi: 3.0.4
+info:
+  title: WebP Converter
+  description: >-
+    WebP Converter transforms WebP images to classic formats like PNG and JPG,
+    or converts other formats to WebP for better compression. Essential for
+    handling modern web images.
+  termsOfService: https://apiverve.com/terms/
+  contact:
+    name: APIVerve Support
+    email: hello@apiverve.com
+    url: https://apiverve.com/contact
+  version: 1.0.0
+externalDocs:
+  description: Learn more about APIVerve
+  url: https://docs.apiverve.com?utm_source=openapi
+servers:
+  - url: https://api.apiverve.com/
+paths:
+  /v1/webpconverter:
+    post:
+      summary: Convert WebP Image
+      description: >-
+        Convert a WebP image to another format, or convert other formats to
+        WebP. Upload an image file to convert.
+      operationId: webpconverter
+      parameters:
+        - name: outputFormat
+          in: query
+          schema:
+            type: string
+          required: true
+          description: Target format
+          example: png
+        - name: quality
+          in: query
+          schema:
+            type: integer
+          required: false
+          description: Output quality (applies to jpg/webp)
+          example: 90
+        - name: maxWidth
+          in: query
+          schema:
+            type: integer
+          required: false
+          description: Maximum width in pixels (maintains aspect ratio)
+          example: 1920
+        - name: maxHeight
+          in: query
+          schema:
+            type: integer
+          required: false
+          description: Maximum height in pixels (maintains aspect ratio)
+          example: 1080
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: status
+                  error:
+                    type: string
+                    description: error
+                  data:
+                    type: object
+                    description: data
+              example:
+                status: ok
+                error: null
+                data:
+                  id: c9d8e7f6-5432-10ba-dcfe-210987654321
+                  inputFormat: webp
+                  outputFormat: png
+                  inputSize: 156789
+                  outputSize: 234567
+                  mimeType: image/png
+                  expires: 1707350400000
+                  downloadURL: >-
+                    https://storage.googleapis.com/apiverve/webpconverter/c9d8e7f6.png
+                code: 200
+        '401':
+          description: Your request was not authorized, or your API Key was invalid
+        '404':
+          description: Requested resource was not found
+        '500':
+          description: A server error has occurred, try again later
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                  description: >-
+                    File to upload (accepted: .webp, .png, .jpg, .jpeg, .gif,
+                    max 10MB)
+                  acceptedTypes:
+                    - .webp
+                    - .png
+                    - .jpg
+                    - .jpeg
+                    - .gif
+                  maxSizeMB: 10
+              required:
+                - image
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+security:
+  - api_key: []
