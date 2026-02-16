@@ -23,7 +23,13 @@ class ValidationError(WebpconverterAPIClientError):
 
 class WebpconverterAPIClient:
     # Validation rules for parameters (generated from schema)
-    VALIDATION_RULES = {"image": {"type": "string", "required": True}, "outputFormat": {"type": "string", "required": True}, "quality": {"type": "integer", "required": False, "min": 1, "max": 100, "default": 90}, "maxWidth": {"type": "integer", "required": False, "min": 1, "max": 10000}, "maxHeight": {"type": "integer", "required": False, "min": 1, "max": 10000}}
+    VALIDATION_RULES = {
+        "image": {"type": "string", "required": True},
+        "outputFormat": {"type": "string", "required": True},
+        "quality": {"type": "integer", "required": False, "min": 1, "max": 100, "default": 90},
+        "maxWidth": {"type": "integer", "required": False, "min": 1, "max": 10000},
+        "maxHeight": {"type": "integer", "required": False, "min": 1, "max": 10000}
+    }
 
     # Format validation patterns
     FORMAT_PATTERNS = {
@@ -71,18 +77,10 @@ class WebpconverterAPIClient:
                 "API key is required. Get your API key at: https://apiverve.com"
             )
 
-        # Check format (alphanumeric, hyphens, and underscores for prefixed keys)
+        # Check format (GUID, prefixed keys like apv_xxx, or alphanumeric)
         if not re.match(r'^[a-zA-Z0-9_-]+$', api_key):
             raise WebpconverterAPIClientError(
                 "Invalid API key format. API key should only contain letters, numbers, hyphens, and underscores. "
-                "Get your API key at: https://apiverve.com"
-            )
-
-        # Check length (at least 32 characters without hyphens/underscores)
-        trimmed_key = api_key.replace('-', '').replace('_', '')
-        if len(trimmed_key) < 32:
-            raise WebpconverterAPIClientError(
-                "Invalid API key. API key appears to be too short. "
                 "Get your API key at: https://apiverve.com"
             )
 
