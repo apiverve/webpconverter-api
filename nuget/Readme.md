@@ -354,12 +354,13 @@ var response = await apiClient.ExecuteAsync(queryOptions);
 The API client implements `IDisposable` for proper resource cleanup:
 
 ```csharp
-using (var apiClient = new WebPConverterAPIClient("[YOUR_API_KEY]"))
-{
-    // This API requires a file upload
+// This API requires a file upload
 using var content = new MultipartFormDataContent();
 using var fileStream = File.OpenRead("/path/to/image.jpg");
 content.Add(new StreamContent(fileStream), "image", "image.jpg");
+
+using (var apiClient = new WebPConverterAPIClient("[YOUR_API_KEY]"))
+{
     var response = await apiClient.ExecuteAsync(queryOptions);
     Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(response, Newtonsoft.Json.Formatting.Indented));
 }
