@@ -20,7 +20,7 @@ namespace APIVerve.Examples
         private static readonly string API_URL = "https://api.apiverve.com/v1/webpconverter";
 
         /// <summary>
-        /// Make a GET request to the WebP Converter API
+        /// Make a POST request to the WebP Converter API
         /// </summary>
         static async Task<JsonDocument> CallWebPConverterAPI()
         {
@@ -29,7 +29,7 @@ namespace APIVerve.Examples
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("x-api-key", API_KEY);
 
-                var response = await client.GetAsync(API_URL);
+                var response = await client.PostAsync(API_URL, null);
 
                 // Check if response is successful
                 response.EnsureSuccessStatusCode();
