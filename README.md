@@ -8,7 +8,7 @@ The WebP Converter API provides a simple, reliable way to integrate webp convert
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![API Status](https://img.shields.io/badge/Status-Active-green.svg)](https://apiverve.com/marketplace/webpconverter?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
-[![Method](https://img.shields.io/badge/Method-GET-blue.svg)](#)
+[![Method](https://img.shields.io/badge/Method-POST-blue.svg)](#)
 [![Platform](https://img.shields.io/badge/Platform-Multi--Platform-orange.svg)](#installation)
 
 **Available on:**
@@ -31,10 +31,12 @@ The WebP Converter API provides a simple, reliable way to integrate webp convert
 async function callWebPConverterAPI() {
     try {
         const response = await fetch('https://api.apiverve.com/v1/webpconverter', {
-            method: 'GET',
+            method: 'POST',
             headers: {
-                'x-api-key': 'YOUR_API_KEY_HERE'
-            }
+                'x-api-key': 'YOUR_API_KEY_HERE',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
         });
 
         const data = await response.json();
@@ -50,8 +52,10 @@ callWebPConverterAPI();
 ### Using cURL
 
 ```bash
-curl -X GET "https://api.apiverve.com/v1/webpconverter?param=value" \
-  -H "x-api-key: YOUR_API_KEY_HERE"
+curl -X POST "https://api.apiverve.com/v1/webpconverter" \
+  -H "x-api-key: YOUR_API_KEY_HERE" \
+  -F "image=@/path/to/your-file"
+# Accepted formats: .webp, .png, .jpg, .jpeg, .gif (max 10MB)
 ```
 
 **Get your API key:** [https://apiverve.com](https://apiverve.com)
@@ -150,7 +154,7 @@ go get github.com/apiverve/webpconverter-api/go
 |---------|---------|
 | **Multi-language SDKs** | Native packages for JavaScript, Python, C#, Go, and Android |
 | **Simple Integration** | Single API key authentication, consistent response format |
-| **Production Ready** | 99.9% uptime, fast response times, used by thousands of developers |
+| **Production Ready** | 99.9% uptime SLA, served from 24 global regions |
 | **Comprehensive Docs** | Full examples, OpenAPI spec, and dedicated support |
 
 ---
@@ -169,7 +173,7 @@ go get github.com/apiverve/webpconverter-api/go
 The WebP Converter API is commonly used for:
 
 - **Web Applications** - Add webp converter features to your frontend or backend
-- **Mobile Apps** - Native SDKs for iOS and Android development
+- **Mobile Apps** - Native SDKs for Android development
 - **Automation** - Integrate with n8n, Zapier, or custom workflows
 - **SaaS Products** - Enhance your product with webp converter capabilities
 - **Data Pipelines** - Process and analyze data at scale
