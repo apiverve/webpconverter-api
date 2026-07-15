@@ -14,14 +14,15 @@ API_URL = 'https://api.apiverve.com/v1/webpconverter'
 
 def call_webpconverter_api():
     """
-    Make a GET request to the WebP Converter API
+    Make a POST request to the WebP Converter API
     """
     try:
         headers = {
-            'x-api-key': API_KEY
+            'x-api-key': API_KEY,
+            'Content-Type': 'application/json'
         }
 
-        response = requests.get(API_URL, headers=headers)
+        response = requests.post(API_URL, headers=headers)
 
         # Raise exception for HTTP errors
         response.raise_for_status()
