@@ -25,12 +25,15 @@ namespace APIVerve.API.WebPConverter
 
         [JsonProperty("data")]
         public Data Data { get; set; }
+
+        [JsonProperty("premium")]
+        public Premium Premium { get; set; }
     }
 
     public partial class Data
     {
         [JsonProperty("id")]
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
 
         [JsonProperty("inputFormat")]
         public string InputFormat { get; set; }
@@ -39,18 +42,30 @@ namespace APIVerve.API.WebPConverter
         public string OutputFormat { get; set; }
 
         [JsonProperty("inputSize")]
-        public long InputSize { get; set; }
+        public long? InputSize { get; set; }
 
         [JsonProperty("outputSize")]
-        public long OutputSize { get; set; }
+        public long? OutputSize { get; set; }
 
         [JsonProperty("mimeType")]
         public string MimeType { get; set; }
 
         [JsonProperty("expires")]
-        public long Expires { get; set; }
+        public long? Expires { get; set; }
 
         [JsonProperty("downloadURL")]
         public Uri DownloadUrl { get; set; }
+    }
+
+    public partial class Premium
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("upgrade_url")]
+        public Uri UpgradeUrl { get; set; }
+
+        [JsonProperty("locked_fields")]
+        public string[] LockedFields { get; set; }
     }
 }
