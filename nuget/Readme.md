@@ -51,7 +51,9 @@ Here's a simple example to get you started quickly:
 
 ```csharp
 using System;
-using APIVerve;
+using System.IO;
+using System.Net.Http;
+using APIVerve.API.WebPConverter;
 
 class Program
 {
@@ -68,7 +70,7 @@ content.Add(new StreamContent(fileStream), "image", "image.jpg");
         // Make the API call
         try
         {
-            var response = await apiClient.ExecuteAsync(queryOptions);
+            var response = await apiClient.ExecuteWithFileAsync(content);
 
             if (response.Error != null)
             {
@@ -116,8 +118,10 @@ The modern async/await pattern provides the best performance and code readabilit
 
 ```csharp
 using System;
+using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
-using APIVerve;
+using APIVerve.API.WebPConverter;
 
 public class Example
 {
@@ -130,7 +134,7 @@ using var content = new MultipartFormDataContent();
 using var fileStream = File.OpenRead("/path/to/image.jpg");
 content.Add(new StreamContent(fileStream), "image", "image.jpg");
 
-        var response = await apiClient.ExecuteAsync(queryOptions);
+        var response = await apiClient.ExecuteWithFileAsync(content);
 
         if (response.Error != null)
         {
@@ -150,7 +154,9 @@ If you need to use synchronous code, you can use the `Execute` method:
 
 ```csharp
 using System;
-using APIVerve;
+using System.IO;
+using System.Net.Http;
+using APIVerve.API.WebPConverter;
 
 public class Example
 {
@@ -163,7 +169,7 @@ using var content = new MultipartFormDataContent();
 using var fileStream = File.OpenRead("/path/to/image.jpg");
 content.Add(new StreamContent(fileStream), "image", "image.jpg");
 
-        var response = apiClient.Execute(queryOptions);
+        var response = apiClient.ExecuteWithFile(content);
 
         if (response.Error != null)
         {
@@ -187,8 +193,10 @@ The API client provides comprehensive error handling. Here are some examples:
 
 ```csharp
 using System;
+using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
-using APIVerve;
+using APIVerve.API.WebPConverter;
 
 public class Example
 {
@@ -203,7 +211,7 @@ content.Add(new StreamContent(fileStream), "image", "image.jpg");
 
         try
         {
-            var response = await apiClient.ExecuteAsync(queryOptions);
+            var response = await apiClient.ExecuteWithFileAsync(content);
 
             // Check for API-level errors
             if (response.Error != null)
@@ -240,8 +248,10 @@ content.Add(new StreamContent(fileStream), "image", "image.jpg");
 
 ```csharp
 using System;
+using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
-using APIVerve;
+using APIVerve.API.WebPConverter;
 
 public class Example
 {
@@ -260,7 +270,7 @@ content.Add(new StreamContent(fileStream), "image", "image.jpg");
 
         try
         {
-            var response = await apiClient.ExecuteAsync(queryOptions);
+            var response = await apiClient.ExecuteWithFileAsync(content);
 
             if (response.Error != null)
             {
@@ -300,7 +310,7 @@ using var content = new MultipartFormDataContent();
 using var fileStream = File.OpenRead("/path/to/image.jpg");
 content.Add(new StreamContent(fileStream), "image", "image.jpg");
 
-var response = await apiClient.ExecuteAsync(queryOptions);
+var response = await apiClient.ExecuteWithFileAsync(content);
 
 // Remove a header
 apiClient.RemoveCustomHeader("X-Custom-Header");
@@ -327,7 +337,7 @@ using var content = new MultipartFormDataContent();
 using var fileStream = File.OpenRead("/path/to/image.jpg");
 content.Add(new StreamContent(fileStream), "image", "image.jpg");
 
-var response = await apiClient.ExecuteAsync(queryOptions);
+var response = await apiClient.ExecuteWithFileAsync(content);
 ```
 
 ### Retry Configuration
@@ -346,7 +356,7 @@ using var content = new MultipartFormDataContent();
 using var fileStream = File.OpenRead("/path/to/image.jpg");
 content.Add(new StreamContent(fileStream), "image", "image.jpg");
 
-var response = await apiClient.ExecuteAsync(queryOptions);
+var response = await apiClient.ExecuteWithFileAsync(content);
 ```
 
 ### Dispose Pattern
@@ -361,7 +371,7 @@ content.Add(new StreamContent(fileStream), "image", "image.jpg");
 
 using (var apiClient = new WebPConverterAPIClient("[YOUR_API_KEY]"))
 {
-    var response = await apiClient.ExecuteAsync(queryOptions);
+    var response = await apiClient.ExecuteWithFileAsync(content);
     Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(response, Newtonsoft.Json.Formatting.Indented));
 }
 // HttpClient is automatically disposed here
