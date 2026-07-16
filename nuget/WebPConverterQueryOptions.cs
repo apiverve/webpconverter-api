@@ -26,18 +26,18 @@ namespace APIVerve.API.WebPConverter
         /// Output quality (applies to jpg/webp)
         /// </summary>
         [JsonProperty("quality")]
-        public string Quality { get; set; }
+        public int? Quality { get; set; }
 
         /// <summary>
         /// Maximum width in pixels (maintains aspect ratio)
         /// </summary>
         [JsonProperty("maxWidth")]
-        public string MaxWidth { get; set; }
+        public int? MaxWidth { get; set; }
 
         /// <summary>
         /// Maximum height in pixels (maintains aspect ratio)
         /// </summary>
         [JsonProperty("maxHeight")]
-        public string MaxHeight { get; set; }
+        public int? MaxHeight { get; set; }
     }
 }
