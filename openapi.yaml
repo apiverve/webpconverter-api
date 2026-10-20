@@ -19,7 +19,7 @@ servers:
 paths:
   /v1/webpconverter:
     post:
-      summary: Convert WebP Image
+      summary: WebP Converter
       description: >-
         Convert a WebP image to another format, or convert other formats to
         WebP. Upload an image file to convert.
@@ -81,8 +81,7 @@ paths:
                   outputSize: 234567
                   mimeType: image/png
                   expires: 1707350400000
-                  downloadURL: >-
-                    https://storage.googleapis.com/apiverve/webpconverter/c9d8e7f6.png
+                  downloadURL: https://storage.googleapis.com/apiverve/webpconverter/c9d8e7f6.png
                 code: 200
         '401':
           description: Your request was not authorized, or your API Key was invalid
@@ -103,13 +102,13 @@ paths:
                   description: >-
                     File to upload (accepted: .webp, .png, .jpg, .jpeg, .gif,
                     max 10MB)
-                  acceptedTypes:
+                  x-acceptedTypes:
                     - .webp
                     - .png
                     - .jpg
                     - .jpeg
                     - .gif
-                  maxSizeMB: 10
+                  x-maxSizeMB: 10
               required:
                 - image
 components:

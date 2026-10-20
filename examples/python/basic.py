@@ -17,12 +17,17 @@ def call_webpconverter_api():
     Make a POST request to the WebP Converter API
     """
     try:
+        # Request body
+        request_body &#x3D; {
+    &#x27;outputFormat&#x27;: &#x27;png&#x27;
+}
+
         headers = {
             'x-api-key': API_KEY,
             'Content-Type': 'application/json'
         }
 
-        response = requests.post(API_URL, headers=headers)
+        response = requests.post(API_URL, headers=headers, json=request_body)
 
         # Raise exception for HTTP errors
         response.raise_for_status()

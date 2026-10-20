@@ -13,12 +13,18 @@ const API_URL = 'https://api.apiverve.com/v1/webpconverter';
  */
 async function callWebPConverterAPI() {
   try {
+    // Request body
+    const requestBody &#x3D; {
+    &quot;outputFormat&quot;: &quot;png&quot;
+};
+
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
         'x-api-key': API_KEY,
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify(requestBody)
     });
 
     // Check if response is successful

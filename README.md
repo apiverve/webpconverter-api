@@ -1,13 +1,13 @@
-# [WebP Converter API](https://apiverve.com/marketplace/webpconverter?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+# [WebP Converter API](https://apiverve.com/marketplace/webpconverter?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 
 WebP Converter transforms WebP images to classic formats like PNG and JPG, or converts other formats to WebP for better compression. Essential for handling modern web images.
 
 The WebP Converter API provides a simple, reliable way to integrate webp converter functionality into your applications. Built for developers who need production-ready webp converter capabilities without the complexity of building from scratch.
 
-**[View API Details →](https://apiverve.com/marketplace/webpconverter?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)**
+**[View API Details →](https://apiverve.com/marketplace/webpconverter?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![API Status](https://img.shields.io/badge/Status-Active-green.svg)](https://apiverve.com/marketplace/webpconverter?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+[![API Status](https://img.shields.io/badge/Status-Active-green.svg)](https://apiverve.com/marketplace/webpconverter?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 [![Method](https://img.shields.io/badge/Method-POST-blue.svg)](#)
 [![Platform](https://img.shields.io/badge/Platform-Multi--Platform-orange.svg)](#installation)
 
@@ -30,13 +30,17 @@ The WebP Converter API provides a simple, reliable way to integrate webp convert
 ```javascript
 async function callWebPConverterAPI() {
     try {
+        const requestBody = {
+    "outputFormat": "png"
+};
+
         const response = await fetch('https://api.apiverve.com/v1/webpconverter', {
             method: 'POST',
             headers: {
                 'x-api-key': 'YOUR_API_KEY_HERE',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({})
+            body: JSON.stringify(requestBody)
         });
 
         const data = await response.json();
@@ -161,7 +165,7 @@ go get github.com/apiverve/webpconverter-api/go
 
 ## Documentation
 
-- 🏠 **API Home:** [WebP Converter API](https://apiverve.com/marketplace/webpconverter?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+- 🏠 **API Home:** [WebP Converter API](https://apiverve.com/marketplace/webpconverter?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 - 📚 **API Reference:** [docs.apiverve.com/ref/webpconverter](https://docs.apiverve.com/ref/webpconverter)
 - 📖 **OpenAPI Spec:** [openapi.yaml](./openapi.yaml)
 - 💡 **Examples:** [examples/](./examples/)
@@ -191,11 +195,36 @@ x-api-key: YOUR_API_KEY_HERE
 Get your API key: [https://apiverve.com](https://apiverve.com)
 
 ### Response Format
-All responses are JSON with this structure:
+
+Every APIVerve endpoint returns the same envelope — check `status`, then read `data`:
+
 ```json
 {
   "status": "ok",
+  "error": null,
   "data": { ... }
+}
+```
+
+### Example Response
+
+A real response from the WebP Converter API:
+
+```json
+{
+  "status": "ok",
+  "error": null,
+  "data": {
+    "id": "c9d8e7f6-5432-10ba-dcfe-210987654321",
+    "inputFormat": "webp",
+    "outputFormat": "png",
+    "inputSize": 156789,
+    "outputSize": 234567,
+    "mimeType": "image/png",
+    "expires": 1707350400000,
+    "downloadURL": "https://storage.googleapis.com/apiverve/webpconverter/c9d8e7f6.png"
+  },
+  "code": 200
 }
 ```
 
@@ -203,7 +232,7 @@ All responses are JSON with this structure:
 
 ## Support & Community
 
-- 🏠 **API Home**: [WebP Converter API](https://apiverve.com/marketplace/webpconverter?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+- 🏠 **API Home**: [WebP Converter API](https://apiverve.com/marketplace/webpconverter?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 - 💬 **Support**: [https://apiverve.com/contact](https://apiverve.com/contact)
 - 🐛 **Issues**: [GitHub Issues](../../issues)
 - 📖 **Documentation**: [https://docs.apiverve.com](https://docs.apiverve.com)
