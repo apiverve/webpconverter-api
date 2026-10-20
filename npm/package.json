@@ -1,6 +1,6 @@
 {
   "name": "@apiverve/webpconverter",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "WebP Converter transforms WebP images to classic formats like PNG and JPG, or converts other formats to WebP for better compression. Essential for handling modern web images.",
   "main": "index.js",
   "types": "index.d.ts",
@@ -23,7 +23,7 @@
     "directory": "npm"
   },
   "keywords": [
-    "webp converter api", "webp to png", "webp to jpg", "png to webp", "jpg to webp"
+    "webp converter api", "webp to jpg api", "bulk convert webp to jpg", "webp to png", "webp to jpg"
   ],
   "author": {
     "name": "APIVerve",
@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/apiverve/webpconverter-api/issues"
   },
-  "homepage": "https://apiverve.com/marketplace/webpconverter?utm_source=npm&utm_medium=homepage",
+  "homepage": "https://apiverve.com/marketplace/webpconverter?utm_source=npm&utm_medium=referral&utm_content=homepage",
   "devDependencies": {
     "mocha": "^11.0.1",
     "chai": "^5.1.2",
