@@ -1,0 +1,49 @@
+{
+    "name": "apiverve/webpconverter",
+    "description": "WebP Converter transforms WebP images to classic formats like PNG and JPG, or converts other formats to WebP for better compression. Essential for handling modern web images.",
+    "version": "1.2.2",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "APIVerve",
+            "email": "hello@apiverve.com",
+            "homepage": "https://apiverve.com"
+        }
+    ],
+    "keywords": [
+        "api",
+        "apiverve",
+        "webpconverter",
+        "webp converter api",
+        "webp to jpg api",
+        "bulk convert webp to jpg",
+        "webp to png",
+        "webp to jpg"
+    ],
+    "homepage": "https://apiverve.com/marketplace/webpconverter?utm_source=php&utm_medium=referral&utm_content=homepage",
+    "support": {
+        "email": "hello@apiverve.com",
+        "docs": "https://docs.apiverve.com/ref/webpconverter",
+        "source": "https://github.com/apiverve/webpconverter-API/tree/main/php"
+    },
+    "require": {
+        "php": ">=7.4",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "APIVerve\\Webpconverter\\": "php/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "APIVerve\\Webpconverter\\Tests\\": "php/tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
